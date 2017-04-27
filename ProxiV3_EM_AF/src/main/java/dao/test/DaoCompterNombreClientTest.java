@@ -9,7 +9,7 @@ import dao.Dao;
 import dao.IDao;
 
 public class DaoCompterNombreClientTest {
-	@Inject
+	
 	IDao idao ;
 	/**
 	 * Test si la methoe pour compter le nombre de client d'un conseiller fonctionne avec la BDD implementee initiale
