@@ -23,7 +23,7 @@ public class DaoJPA implements IDao {
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3-pu");
 	
-	//non testé
+	//testée
 	@Override
 	public void modifierCompte(Compte compte) {
 		
@@ -35,7 +35,7 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 	
-	//non testé
+	//testée
 	@Override
 	public void creerConseiller(Conseiller conseiller) {
 	
@@ -47,7 +47,7 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 
-	//non testé
+	//testée
 	@Override
 	public void modifierConseiller(Conseiller conseiller) {
 		
@@ -88,20 +88,21 @@ public class DaoJPA implements IDao {
 }
 		
 
-	//non testée
+	//testée
 	@Override
 	public void supprimerConseiller(Conseiller conseiller) {
 		EntityManager em = emf.createEntityManager();
+		int id = conseiller.getId();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Personne cl = em.find(Personne.class, conseiller.getId());
+		Personne cl = em.find(Personne.class, id);
 		em.remove(cl);
 		tx.commit();
 		em.close();
 	}
 	
 	
-	//non testée
+	//testée
 	@Override
 	public void creerCompte(Compte compte) {
 		EntityManager em = emf.createEntityManager();
@@ -152,13 +153,14 @@ public class DaoJPA implements IDao {
 	
 	}
 
-	//non testée
+	//testée
 	@Override
 	public void supprimerCompte(Compte compte) {
 		EntityManager em = emf.createEntityManager();
+		int id = compte.getIdCompte();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Compte cl = em.find(Compte.class, compte.getIdCompte());
+		Compte cl = em.find(Compte.class, id);
 		em.remove(cl);
 		tx.commit();
 		em.close();
@@ -189,13 +191,14 @@ public class DaoJPA implements IDao {
 		
 	}
 
-	//non testée
+	//testée
 	@Override
 	public void supprimerClient(Client client) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		int id = client.getId();
 		tx.begin();
-		Personne cl = em.find(Personne.class, client.getId());
+		Personne cl = em.find(Personne.class, id);
 		em.remove(cl);
 		tx.commit();
 		em.close();
@@ -206,6 +209,7 @@ public class DaoJPA implements IDao {
 	public Client retourneClientParId(int idClient) {
 
 		Client c = new Client();
+		c=null;
 		CompteCourant cc = new CompteCourant();
 		cc=null;
 		CompteEpargne ce = new CompteEpargne();
@@ -270,26 +274,33 @@ public class DaoJPA implements IDao {
 	}
 		
 
-	//non testée
+	//testée
 	@Override
 	public Collection<Compte> listerComptes() {
 		Collection<Compte> comptes = new ArrayList<Compte>();
 		Collection<CompteCourant> cc = new ArrayList<CompteCourant>();
 		Collection<CompteEpargne> ce = new ArrayList<CompteEpargne>();
+		double x = 1000;
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT c FROM Compte c WHERE c.Type_Compte= :lecompte");
-		q.setParameter("lecompte", "CompteCourant");
+		Query q = em.createQuery("SELECT c FROM Compte c WHERE c.remuneration= :rem");
+		q.setParameter("rem", 0.03);
 		cc=q.getResultList();
-		comptes.addAll(cc);
-		Query q2 = em.createQuery("SELECT c FROM Compte c WHERE c.Type_Compte= :lecompte2");
-		q2.setParameter("lecompte2", "CompteEpargne");
+		for(Compte compte: cc)
+		{
+			comptes.add(compte);
+		}
+		Query q2 = em.createQuery("SELECT c FROM Compte c WHERE c.decouvert= :decouvert");
+		q2.setParameter("decouvert", x);
 		ce=q2.getResultList();
-		comptes.addAll(ce);
+		for(Compte compte2: ce)
+		{
+			comptes.add(compte2);
+		}
 		return comptes;
 		
 	}
 
-	// non testée
+	//testée
 	@Override
 	public Conseiller afficherConseiller(int idConseiller) {
 		Conseiller c = new Conseiller();
@@ -299,22 +310,14 @@ public class DaoJPA implements IDao {
 		List<Conseiller> listconseiller = q.getResultList();
 		for(Conseiller conseiller :listconseiller)
 		{
-			c.setId(conseiller.getId());
-			c.setNom(conseiller.getNom());
-			c.setPrenom(conseiller.getPrenom());
-			c.setAdresse(conseiller.getAdresse());
-			c.setCodePostal(conseiller.getCodePostal());
-			c.setVille(conseiller.getVille());
-			c.setTelephone(conseiller.getTelephone());
-			c.setLogin(conseiller.getLogin());
-			c.setPwd(conseiller.getPwd());
-			}
+			c=conseiller;
+		}
 		em.close();
 		return c;
 		
 	}
 
-	//non testée
+	//testée
 	@Override
 	public int compterNombreClient(int idcon) {
 		int i = 0;

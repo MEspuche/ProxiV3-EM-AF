@@ -42,7 +42,9 @@ public class DaoAjouterClientTest {
 		c.setConseiller(c2);
 		idao.creerClient(c);
 		
-		Assert.assertEquals(1,1);
+		Client client = idao.retourneClientParId(9);
+		
+		Assert.assertEquals(client.getAdresse(),a);
 		
 	}
 
