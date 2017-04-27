@@ -18,8 +18,8 @@ import metier.CompteEpargne;
 import metier.Conseiller;
 import metier.Personne;
 
-@TypeDaoQualificateur(TypeDAO.V3)
-public class daoJPA implements IDao {
+//@TypeDaoQualificateur(TypeDAO.V3)
+public class DaoJPA implements IDao {
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3-pu");
 	

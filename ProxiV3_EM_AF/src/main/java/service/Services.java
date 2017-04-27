@@ -3,11 +3,8 @@ package service;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.inject.Inject;
-
+import dao.DaoJPA;
 import dao.IDao;
-import dao.TypeDaoQualificateur;
-import dao.TypeDaoQualificateur.TypeDAO;
 import metier.Agence;
 import metier.Client;
 import metier.Compte;
@@ -18,9 +15,8 @@ import metier.Gerant;
 
 public class Services implements IConseillerService, ILoginService, IGerantService {
 
-	@Inject
-	@TypeDaoQualificateur(TypeDAO.V3)
-	private IDao iDao;
+
+	private IDao iDao = new DaoJPA();
 
 	@Override
 	public Conseiller verificationLogin(String login, String pwd) {

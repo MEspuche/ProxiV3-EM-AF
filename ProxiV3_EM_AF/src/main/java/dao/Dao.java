@@ -14,7 +14,7 @@ import metier.CompteCourant;
 import metier.CompteEpargne;
 import metier.Conseiller;
 
-@TypeDaoQualificateur(TypeDAO.V2)
+//@TypeDaoQualificateur(TypeDAO.V2)
 public class Dao implements IDao {
 
 	@Override

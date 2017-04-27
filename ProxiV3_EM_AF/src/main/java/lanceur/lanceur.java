@@ -1,5 +1,6 @@
 package lanceur;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -7,9 +8,11 @@ import javax.persistence.Persistence;
 
 import metier.Client;
 import metier.Conseiller;
+import service.ILoginService;
 
 
 public class lanceur {
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -50,17 +53,33 @@ public class lanceur {
 		
 		
 		Client cl3= new Client();
-		cl3.setNom("Smithdfsf");
-		cl3.setPrenom("John");
-		cl3.setAdresse("route du chemin");
-		cl3.setCodePostal("78852");
-		cl3.setVille("Lille");
-		cl3.setTelephone("014458712");
+		cl3.setNom("Doe");
+		cl3.setPrenom("Jane");
+		cl3.setAdresse("chemin du pré");
+		cl3.setCodePostal("38000");
+		cl3.setVille("Grenoble");
+		cl3.setTelephone("0145789632");
 		cl3.setEntreprise(false);
 		cl3.setNomEntreprise(null);
-		cl3.setEmail("john.smith@test.com");
+		cl3.setEmail("jdoe@example.fr");
 		cl3.setConseiller(c1);
+		
+		Client cl4= new Client();
+		cl4.setNom("Doe");
+		cl4.setPrenom("Jane");
+		cl4.setAdresse("chemin du pré");
+		cl4.setCodePostal("38000");
+		cl4.setVille("Grenoble");
+		cl4.setTelephone("0145789632");
+		cl4.setEntreprise(false);
+		cl4.setNomEntreprise(null);
+		cl4.setEmail("jdoe@example.fr");
+		cl4.setConseiller(c1);
+		
+		
 
+
+ 
 
 		
 		
@@ -72,7 +91,6 @@ public class lanceur {
 		em.persist(c2);
 		tx.commit();
 		em.close();
-		
 		
 
 		
