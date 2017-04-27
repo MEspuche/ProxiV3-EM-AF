@@ -17,7 +17,7 @@ import service.Services;
 @ManagedBean
 @Named
 @SessionScoped
-public class MBean implements Serializable
+public class MBeanLogin implements Serializable
 {
     /**
 	 * 
