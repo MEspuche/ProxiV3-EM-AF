@@ -16,6 +16,7 @@ import metier.Compte;
 import metier.CompteCourant;
 import metier.CompteEpargne;
 import metier.Conseiller;
+import metier.Personne;
 
 @TypeDaoQualificateur(TypeDAO.V3)
 public class daoJPA implements IDao {
@@ -31,9 +32,8 @@ public class daoJPA implements IDao {
 		em.merge(compte);
 		tx.commit();
 		em.close();
-		
-	
 	}
+	
 
 	@Override
 	public void creerConseiller(Conseiller conseiller) {
@@ -44,16 +44,20 @@ public class daoJPA implements IDao {
 		em.persist(conseiller);
 		tx.commit();
 		em.close();
-		
-		
-		
 	}
 
+	
 	@Override
-	public int modifierConseiller(Conseiller conseiller) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void modifierConseiller(Conseiller conseiller) {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.merge(conseiller);
+		tx.commit();
+		em.close();
 	}
+	
 
 	@Override
 	public Conseiller verificationLogin(String login, String pwd) {
@@ -85,33 +89,76 @@ public class daoJPA implements IDao {
 
 
 	@Override
-	public int supprimerConseiller(Conseiller conseiller) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void supprimerConseiller(Conseiller conseiller) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Personne cl = em.find(Personne.class, conseiller.getId());
+		em.remove(cl);
+		tx.commit();
+		em.close();
 	}
+	
+	
 
 	@Override
-	public int creerCompte(Compte compte) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void creerCompte(Compte compte) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(compte);
+		tx.commit();
+		em.close();
 	}
 
 	@Override
 	public Compte getCompteParId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String typeCompte;
+		CompteEpargne ce = new CompteEpargne();
+		CompteCourant cc = new CompteCourant();
+		
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT c FROM Compte c WHERE c.client_id = :lid AND a.Type_Compte = :letype");
+		q.setParameter("lid", id);
+		q.setParameter("letype", "CompteCourant");
+		cc=(CompteCourant) q.getSingleResult();
+		
+		Query q3 = em.createQuery("SELECT a FROM Compte a WHERE a.client_id = :lid AND a.Type_Compte = :letype2");
+		q3.setParameter("lid", id);
+		q3.setParameter("letype2", "CompteEpargne");
+		ce = (CompteEpargne) q3.getSingleResult();
+		
+		if(cc!=null)
+		{
+			return cc;
+		}
+		if(ce!=null)
+		{
+			return ce;
+		}
+		
+		return cc;
 	}
 
 	@Override
-	public int supprimerCompte(Compte compte) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void supprimerCompte(Compte compte) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Compte cl = em.find(Compte.class, compte.getIdCompte());
+		em.remove(cl);
+		tx.commit();
+		em.close();
 	}
 
 	@Override
-	public int creerClient(Client client) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void creerClient(Client client) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(client);
+		tx.commit();
+		em.close();
 	}
 
 	@Override
@@ -127,15 +174,50 @@ public class daoJPA implements IDao {
 	}
 
 	@Override
-	public int supprimerClient(Client client) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void supprimerClient(Client client) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Personne cl = em.find(Personne.class, client.getId());
+		em.remove(cl);
+		tx.commit();
+		em.close();
 	}
 
 	@Override
 	public Client retourneClientParId(int idClient) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Client c = new Client();
+		CompteCourant cc = new CompteCourant();
+		CompteEpargne ce = new CompteEpargne();
+		Collection<Compte> colcomptes = new ArrayList();
+		EntityManager em = emf.createEntityManager();
+		
+		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.id = :lid");
+		q.setParameter("lid", idClient);
+		
+		Query q2 = em.createQuery("SELECT a FROM Compte a WHERE a.client_id = :lid AND a.Type_Compte = :letype");
+		q2.setParameter("lid", idClient);
+		q2.setParameter("letype", "CompteCourant");
+		cc = (CompteCourant) q2.getSingleResult();
+		
+		Query q3 = em.createQuery("SELECT a FROM Compte a WHERE a.client_id = :lid AND a.Type_Compte = :letype2");
+		q3.setParameter("lid", idClient);
+		q3.setParameter("letype2", "CompteEpargne");
+		ce = (CompteEpargne) q3.getSingleResult();
+		
+		if(cc!=null)
+		{
+			colcomptes.add(cc);
+		}
+		
+		if(ce!=null)
+		{
+			colcomptes.add(ce);
+		}
+		
+		c.setComptes(colcomptes);
+		return c;
 	}
 
 	@Override
@@ -171,8 +253,26 @@ public class daoJPA implements IDao {
 
 	@Override
 	public Conseiller afficherConseiller(int idConseiller) {
-		// TODO Auto-generated method stub
-		return null;
+		Conseiller c = new Conseiller();
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.id= :lid");
+		q.setParameter("lid", idConseiller);
+		List<Conseiller> listconseiller = q.getResultList();
+		for(Conseiller conseiller :listconseiller)
+		{
+			c.setId(conseiller.getId());
+			c.setNom(conseiller.getNom());
+			c.setPrenom(conseiller.getPrenom());
+			c.setAdresse(conseiller.getAdresse());
+			c.setCodePostal(conseiller.getCodePostal());
+			c.setVille(conseiller.getVille());
+			c.setTelephone(conseiller.getTelephone());
+			c.setLogin(conseiller.getLogin());
+			c.setPwd(conseiller.getPwd());
+			}
+		em.close();
+		return c;
+		
 	}
 
 }

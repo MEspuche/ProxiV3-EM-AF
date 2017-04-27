@@ -132,7 +132,7 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public int modifierConseiller(Conseiller conseiller) {
+	public void modifierConseiller(Conseiller conseiller) {
 		int i = 0;
 		try {
 
@@ -165,7 +165,7 @@ public class Dao implements IDao {
 			DaoConnexion.closeConnexion();
 
 		}
-		return i;
+		
 
 	}
 
@@ -207,15 +207,15 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public int supprimerConseiller(Conseiller conseiller) {
+	public void supprimerConseiller(Conseiller conseiller) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
-	public int creerCompte(Compte compte) {
+	public void creerCompte(Compte compte) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
@@ -271,15 +271,15 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public int supprimerCompte(Compte compte) {
+	public void supprimerCompte(Compte compte) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
-	public int creerClient(Client client) {
+	public void creerClient(Client client) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
@@ -321,9 +321,9 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public int supprimerClient(Client client) {
+	public void supprimerClient(Client client) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
