@@ -25,7 +25,7 @@ public interface IDao {
  * @param conseiller conseiller modifi�
  * @return retourne le nombre de lignes modifi�es dans la base de donn�es
  */
-	public int modifierConseiller(Conseiller conseiller);
+	public void modifierConseiller(Conseiller conseiller);
 /**
  * M�thode qui verifie le login et le passWord d'un utilisateur dans la base de donn�es
  * @param login identifiant
@@ -39,14 +39,14 @@ public interface IDao {
  * @return retourne le nombre de lignes modifi�es dans la base de donn�es
  */
 
-	public int supprimerConseiller(Conseiller conseiller);
+	public void supprimerConseiller(Conseiller conseiller);
 /**
  * creer un compte dans la base de donn�es
  * @param compte compte � cr�er
  * @return retourne le nombre de lignes modifi�es dans la base de donn�es
  */
  
-	public int creerCompte(Compte compte);
+	public void creerCompte(Compte compte);
 /**
  * retourne un compte selectionner par sont id
  * @param id identifiant du compte a retourner
@@ -58,13 +58,13 @@ public interface IDao {
  * @param compte compte � supprimer
  * @return retourne le nombre de lignes modifi�es
  */
-	public int supprimerCompte(Compte compte);
+	public void supprimerCompte(Compte compte);
 /**
  * creer un client dans la base de donn�es
  * @param client client � creer
  * @return retourne le nombre de lignes modifi�es
  */
-	public int creerClient(Client client);
+	public void creerClient(Client client);
 	
 /**
  * modifie le client dans la base de donn�es
@@ -78,7 +78,7 @@ public interface IDao {
  * @return retourne le nombre de lignes modifi�es dans la base de donn�es
  */
 
-	public int supprimerClient(Client client);
+	public void supprimerClient(Client client);
 /**
  * Retourne un client correspondant a l'Id
  * @param idClient id du client � retourner
