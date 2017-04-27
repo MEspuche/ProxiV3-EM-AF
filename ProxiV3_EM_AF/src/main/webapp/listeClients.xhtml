@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1"/>
-<title>Insert title here</title>
-</head>
-<body>
-<H2>Hello</H2>
-</body>
-</html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Identification sur Proxibanque</title>
+</h:head>
+<h:messages></h:messages>
+<h:body>
+	<h:form>
+
+		<h:dataTable value="#{mBeanListeClient.clients}" var="leClient" border="1"
+			width="200" cellpadding="5">
+			<f:facet name="header">
+				<h:outputLabel value="Liste des clients" style="color:green"></h:outputLabel>
+			</f:facet>
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+	#{leClient.id}
+	</h:column>
+			<h:column>
+				<f:facet name="header">Nom</f:facet>
+	#{leClient.nom}
+	</h:column>
+			<h:column>
+				<f:facet name="header">Prenom</f:facet>
+	#{leClient.prenom}
+	</h:column>
+	<h:column>
+				<f:facet name="header">nomEntreprise</f:facet>
+	#{leClient.nomEntreprise}
+	</h:column>
+			<h:column>
+				<f:facet name="header">Afficher</f:facet>
+				<h:commandLink update="@form" value="Afficher"
+					action="#{mBeanListeClient.afficherClient()}">
+					<f:setPropertyActionListener value="#{leClient}" target="#{mBeanListeClient.client}"></f:setPropertyActionListener>
+					</h:commandLink>
+
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+</h:body>
+</h:html>
