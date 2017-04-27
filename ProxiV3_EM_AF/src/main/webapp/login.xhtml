@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
 	<title>Identification sur Proxibanque</title>
 </h:head>
+<h:messages></h:messages>
 <h:body>
-<!-- 	<p:panel header="Veuillez vous identifier"> -->
-		<h:form>  
-			<h:panelGrid columns="2" cellpadding="2">
-				<h:outputLabel for="#{mBean.conseiller.login}" value="login" />
-				<h:inputText value="#{mBean.conseiller.login}" label="login"></h:inputText>
+		<p:panel header="Veuillez vous identifier">
+	<h:form>
+		<h:panelGrid columns="2" cellpadding="2">
+			<h:outputLabel for="#{mBean.conseiller.login}" value="login" />
+			<h:inputText value="#{mBean.conseiller.login}" label="login"></h:inputText>
 
-				<h:outputLabel for="#{mBean.conseiller.pwd}" value="Mot de passe" />
-				<h:inputSecret value="#{mBean.conseiller.pwd}"></h:inputSecret>
+			<h:outputLabel for="#{mBean.conseiller.pwd}" value="Mot de passe" />
+			<h:inputSecret value="#{mBean.conseiller.pwd}"></h:inputSecret>
 
-				<h:commandButton type="submit" value="S'identifier"
-					action="#{mBean.verificationLogin}"></h:commandButton>
-			</h:panelGrid>
-		</h:form>
-<!-- 	</p:panel> -->
+			<h:commandButton type="submit" value="S'identifier"
+				action="#{mBean.verificationLogin}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+		</p:panel>
 </h:body>
 </h:html>
