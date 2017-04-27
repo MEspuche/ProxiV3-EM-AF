@@ -10,14 +10,14 @@
 <!-- 	<p:panel header="Veuillez vous identifier"> -->
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="2">
-				<h:outputLabel for="#{MBean.login}" value="login" />
-				<h:inputText value="#{MBean.login}" label="login"></h:inputText>
+				<h:outputLabel for="#{mBean.login}" value="login" />
+				<h:inputText value="#{mBean.login}" label="login"></h:inputText>
 
-				<h:outputLabel for="#{MBean.pwd}" value="Mot de passe" />
-				<h:inputSecret value="#{MBean.pwd}"></h:inputSecret>
+				<h:outputLabel for="#{mBean.pwd}" value="Mot de passe" />
+				<h:inputSecret value="#{mBean.pwd}"></h:inputSecret>
 
 				<h:commandButton type="submit" value="S'identifier"
-					action="#{MBean.verificationLogin}"></h:commandButton>
+					action="#{mBean.verificationLogin}"></h:commandButton>
 			</h:panelGrid>
 		</h:form>
 <!-- 	</p:panel> -->
