@@ -1,14 +1,10 @@
 package lanceur;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.inject.Inject;
 
-import dao.IDao;
-import dao.daoJPA;
-import metier.Client;
 import metier.Conseiller;
+import service.ILoginService;
+
 
 public class lanceur {
 
@@ -43,10 +39,7 @@ public class lanceur {
 		em.close();
 		*/
 		
-		IDao idao = new daoJPA();
-		Conseiller c = idao.verificationLogin("test1", "test1");
-		System.out.println(c.getLogin() + c.getPwd());
-		System.out.println(c);
+
 		
 		
 		
