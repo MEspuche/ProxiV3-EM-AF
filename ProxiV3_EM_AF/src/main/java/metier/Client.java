@@ -28,6 +28,17 @@ public class Client extends Personne {
 	
 	
 
+	
+
+
+
+	public Client(String nom, String prenom, String adresse, String codePostal, String ville, String telephone) {
+		super(nom, prenom, adresse, codePostal, ville, telephone);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Client() {
 		super();
 	}

@@ -106,5 +106,11 @@ public interface IDao {
 	 * @return conseiller corespondant a l'Id
 	 */
 	public Conseiller afficherConseiller(int idConseiller);
+	/**
+	 * Compter le nombre de clients reliés à un conseiller
+	 * @param idcon identifiant du conseiller
+	 * @return
+	 */
+	public int compterNombreClient(int idcon);
 
 }
