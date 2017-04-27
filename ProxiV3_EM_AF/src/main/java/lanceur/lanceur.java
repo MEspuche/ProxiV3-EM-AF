@@ -65,19 +65,31 @@ public class lanceur {
 		cl3.setConseiller(c1);
 		
 		Client cl4= new Client();
-		cl4.setNom("Doe");
-		cl4.setPrenom("Jane");
-		cl4.setAdresse("chemin du pré");
-		cl4.setCodePostal("38000");
-		cl4.setVille("Grenoble");
-		cl4.setTelephone("0145789632");
+		cl4.setNom("Sinatra");
+		cl4.setPrenom("Frank");
+		cl4.setAdresse("hollywood boulevard");
+		cl4.setCodePostal("14587");
+		cl4.setVille("Los Angeles");
+		cl4.setTelephone("555-4548");
 		cl4.setEntreprise(false);
 		cl4.setNomEntreprise(null);
-		cl4.setEmail("jdoe@example.fr");
+		cl4.setEmail("fsinatra@star.com");
 		cl4.setConseiller(c1);
 		
 		
 
+		Client cl5= new Client();
+		cl5.setNom("Sinatra");
+		cl5.setPrenom("Frank");
+		cl5.setAdresse("hollywood boulevard");
+		cl5.setCodePostal("14587");
+		cl5.setVille("Los Angeles");
+		cl5.setTelephone("555-4548");
+		cl5.setEntreprise(false);
+		cl5.setNomEntreprise(null);
+		cl5.setEmail("fsinatra@star.com");
+		cl5.setConseiller(c1);
+		
 
  
 
