@@ -95,7 +95,7 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public int creerConseiller(Conseiller conseiller) {
+	public void creerConseiller(Conseiller conseiller) {
 		int i = 0;
 		try {
 
@@ -127,7 +127,7 @@ public class Dao implements IDao {
 			DaoConnexion.closeConnexion();
 
 		}
-		return i;
+		
 
 	}
 

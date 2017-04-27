@@ -5,6 +5,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import dao.IDao;
+import dao.daoJPA;
 import metier.Client;
 import metier.Conseiller;
 
@@ -13,7 +15,7 @@ public class lanceur {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Conseiller c1 = new Conseiller();
+		/*Conseiller c1 = new Conseiller();
 		c1.setAdresse("rue A");
 		c1.setNom("A");
 		c1.setPrenom("A");
@@ -39,6 +41,15 @@ public class lanceur {
 		em.persist(c2);
 		tx.commit();
 		em.close();
+		*/
+		
+		IDao idao = new daoJPA();
+		Conseiller c = idao.verificationLogin("test1", "test1");
+		System.out.println(c.getLogin() + c.getPwd());
+		System.out.println(c);
+		
+		
+		
 		
 	}
 

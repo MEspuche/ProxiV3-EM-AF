@@ -40,9 +40,17 @@ public class daoJPA implements IDao {
 	}
 
 	@Override
-	public int creerConseiller(Conseiller conseiller) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void creerConseiller(Conseiller conseiller) {
+	
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(conseiller);
+		tx.commit();
+		em.close();
+		
+		
+		
 	}
 
 	@Override
@@ -55,8 +63,10 @@ public class daoJPA implements IDao {
 	public Conseiller verificationLogin(String login, String pwd) {
 		
 		Conseiller c2 = new Conseiller();
+		c2.setLogin("");
+		c2.setPwd("");
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.login= :lelogin AND c.pwd= :lemdp");
+		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.login = :lelogin AND c.pwd = :lemdp");
 		q.setParameter("lelogin", login);
 		q.setParameter("lemdp", pwd);
 		List<Conseiller> listpwd = q.getResultList();
@@ -70,6 +80,7 @@ public class daoJPA implements IDao {
 			c2.setVille(conseiller.getVille());
 			c2.setLogin(conseiller.getLogin());
 			c2.setPwd(conseiller.getPwd());
+			
 			}
 		em.close();
 		return c2;

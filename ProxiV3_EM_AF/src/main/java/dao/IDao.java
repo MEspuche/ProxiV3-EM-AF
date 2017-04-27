@@ -19,7 +19,7 @@ public interface IDao {
  * @return retourne le nombre de lignes modifi�es dans la table
  */
  
-	public int creerConseiller(Conseiller conseiller);
+	public void creerConseiller(Conseiller conseiller);
 /**
  * Modifie un conseiller dans la base de donn�es
  * @param conseiller conseiller modifi�
