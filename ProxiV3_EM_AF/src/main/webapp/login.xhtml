@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta charset="UTF-8" />
 	<title>Identification sur Proxibanque</title>
 </h:head>
 <h:body>
-	<p:panel header="Veuillez vous identifier">
+<!-- 	<p:panel header="Veuillez vous identifier"> -->
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="2">
 				<h:outputLabel for="#{MBean.login}" value="login" />
@@ -22,6 +20,6 @@
 					action="#{MBean.verificationLogin}"></h:commandButton>
 			</h:panelGrid>
 		</h:form>
-	</p:panel>
+<!-- 	</p:panel> -->
 </h:body>
 </h:html>
