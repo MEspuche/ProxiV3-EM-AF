@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import metier.Conseiller;
 import service.IConseillerService;
@@ -21,9 +22,11 @@ public class MBean implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Inject
+	private ILoginService iLogin;
+	@Inject
+	private IConseillerService iService;
 	
-	ILoginService iLogin = new Services();
-	IConseillerService iService = new Services();
 	private String login;
 	private String pwd;
 
