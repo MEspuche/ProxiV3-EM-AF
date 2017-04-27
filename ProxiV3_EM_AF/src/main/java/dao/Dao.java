@@ -465,4 +465,10 @@ public class Dao implements IDao {
 		return c;
 	}
 
+	@Override
+	public int compterNombreClient(int idcon) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

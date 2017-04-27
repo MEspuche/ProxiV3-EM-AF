@@ -23,6 +23,7 @@ public class DaoJPA implements IDao {
 
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3-pu");
 	
+	//non testé
 	@Override
 	public void modifierCompte(Compte compte) {
 		
@@ -34,7 +35,7 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 	
-
+	//non testé
 	@Override
 	public void creerConseiller(Conseiller conseiller) {
 	
@@ -46,7 +47,7 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 
-	
+	//non testé
 	@Override
 	public void modifierConseiller(Conseiller conseiller) {
 		
@@ -58,7 +59,7 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 	
-
+	//testée
 	@Override
 	public Conseiller verificationLogin(String login, String pwd) {
 		
@@ -87,7 +88,7 @@ public class DaoJPA implements IDao {
 }
 		
 
-
+	//non testée
 	@Override
 	public void supprimerConseiller(Conseiller conseiller) {
 		EntityManager em = emf.createEntityManager();
@@ -100,7 +101,7 @@ public class DaoJPA implements IDao {
 	}
 	
 	
-
+	//non testée
 	@Override
 	public void creerCompte(Compte compte) {
 		EntityManager em = emf.createEntityManager();
@@ -110,36 +111,48 @@ public class DaoJPA implements IDao {
 		tx.commit();
 		em.close();
 	}
-
+	
+	//testée
 	@Override
 	public Compte getCompteParId(int id) {
-		String typeCompte;
+		double x = 1000;
 		CompteEpargne ce = new CompteEpargne();
+		ce=null;
 		CompteCourant cc = new CompteCourant();
+		cc=null;
+		Collection <CompteEpargne> cel = new ArrayList<>();
+		Collection <CompteCourant> col = new ArrayList<>();
 		
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT c FROM Compte c WHERE c.client_id = :lid AND a.Type_Compte = :letype");
+		Query q = em.createQuery("SELECT c FROM Compte c WHERE c.idCompte = :lid AND c.remuneration= :rem");
 		q.setParameter("lid", id);
-		q.setParameter("letype", "CompteCourant");
-		cc=(CompteCourant) q.getSingleResult();
-		
-		Query q3 = em.createQuery("SELECT a FROM Compte a WHERE a.client_id = :lid AND a.Type_Compte = :letype2");
-		q3.setParameter("lid", id);
-		q3.setParameter("letype2", "CompteEpargne");
-		ce = (CompteEpargne) q3.getSingleResult();
-		
-		if(cc!=null)
+		q.setParameter("rem", 0.03);
+		cel= q.getResultList();
+		for(CompteEpargne ce2 : cel)
 		{
-			return cc;
+			ce= ce2;
 		}
 		if(ce!=null)
 		{
 			return ce;
 		}
+		else
+		{
+		Query q3 = em.createQuery("SELECT a FROM Compte a WHERE a.idCompte = :lid AND a.decouvert = :decouvert");
+		q3.setParameter("lid", id);
+		q3.setParameter("decouvert", x);
+		col = q3.getResultList();
+		for(CompteCourant cc2 : col)
+		{
+			cc = cc2;
+		}
 		
 		return cc;
+		}
+	
 	}
 
+	//non testée
 	@Override
 	public void supprimerCompte(Compte compte) {
 		EntityManager em = emf.createEntityManager();
@@ -151,6 +164,7 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 
+	//testée
 	@Override
 	public void creerClient(Client client) {
 		EntityManager em = emf.createEntityManager();
@@ -161,6 +175,8 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 
+	
+	//testée
 	@Override
 	public void modifierClient(Client client) {
 		
@@ -173,6 +189,7 @@ public class DaoJPA implements IDao {
 		
 	}
 
+	//non testée
 	@Override
 	public void supprimerClient(Client client) {
 		EntityManager em = emf.createEntityManager();
@@ -184,55 +201,76 @@ public class DaoJPA implements IDao {
 		em.close();
 	}
 
+	//testée
 	@Override
 	public Client retourneClientParId(int idClient) {
 
 		Client c = new Client();
 		CompteCourant cc = new CompteCourant();
+		cc=null;
 		CompteEpargne ce = new CompteEpargne();
+		ce=null;
 		Collection<Compte> colcomptes = new ArrayList();
 		EntityManager em = emf.createEntityManager();
+		double x = 1000;
 		
 		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.id = :lid");
 		q.setParameter("lid", idClient);
+		Collection<Client> col = q.getResultList();
+		for(Client cl : col)
+		{
+			c = cl;
+		}
 		
-		Query q2 = em.createQuery("SELECT a FROM Compte a WHERE a.client_id = :lid AND a.Type_Compte = :letype");
+		Query q2 = em.createQuery("SELECT a FROM Compte a WHERE a.client.id = :lid AND a.decouvert = :decouvert");
 		q2.setParameter("lid", idClient);
-		q2.setParameter("letype", "CompteCourant");
-		cc = (CompteCourant) q2.getSingleResult();
+		q2.setParameter("decouvert", x);
+		Collection<CompteCourant> cc2 = q2.getResultList();
+		for(CompteCourant cc3 : cc2)
+		{
+			cc = cc3;
+		}
 		
-		Query q3 = em.createQuery("SELECT a FROM Compte a WHERE a.client_id = :lid AND a.Type_Compte = :letype2");
+		
+		
+		Query q3 = em.createQuery("SELECT a FROM Compte a WHERE a.client.id = :lid AND a.remuneration= :rem");
 		q3.setParameter("lid", idClient);
-		q3.setParameter("letype2", "CompteEpargne");
-		ce = (CompteEpargne) q3.getSingleResult();
+		q3.setParameter("rem", 0.03);
+		Collection<CompteEpargne>ce2 = q3.getResultList();
 		
+		for(CompteEpargne ce3 : ce2)
+		{
+			ce= ce3;
+		}
 		if(cc!=null)
 		{
 			colcomptes.add(cc);
+			if(ce!=null)
+			{
+				colcomptes.add(ce);
+			}
+			
 		}
-		
-		if(ce!=null)
-		{
-			colcomptes.add(ce);
-		}
-		
+
 		c.setComptes(colcomptes);
 		return c;
 	}
 
+	//testée
 	@Override
 	public Collection<Client> listerClientsParConseiller(int idConseiller) {
 		
 		Collection<Client> clients = new ArrayList<Client>();
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.conseiller_id= :lidconseiller");
+		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.conseiller.id= :lidconseiller");
 		q.setParameter("lidconseiller", idConseiller);
 		clients = q.getResultList();
 		em.close();
 		return clients;
 	}
 		
-		
+
+	//non testée
 	@Override
 	public Collection<Compte> listerComptes() {
 		Collection<Compte> comptes = new ArrayList<Compte>();
@@ -251,6 +289,7 @@ public class DaoJPA implements IDao {
 		
 	}
 
+	// non testée
 	@Override
 	public Conseiller afficherConseiller(int idConseiller) {
 		Conseiller c = new Conseiller();
@@ -273,6 +312,17 @@ public class DaoJPA implements IDao {
 		em.close();
 		return c;
 		
+	}
+
+	//non testée
+	@Override
+	public int compterNombreClient(int idcon) {
+		int i = 0;
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("SELECT COUNT(c) FROM Personne c WHERE c.id= :lid");
+		q.setParameter("lid", idcon);
+		i=(int) q.getSingleResult();
+		return i;
 	}
 
 }

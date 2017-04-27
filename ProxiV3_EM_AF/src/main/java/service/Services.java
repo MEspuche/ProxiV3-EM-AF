@@ -18,6 +18,11 @@ public class Services implements IConseillerService, ILoginService, IGerantServi
 
 	private IDao iDao = new DaoJPA();
 
+	public int compterNombreClient(int idcon) {
+		return iDao.compterNombreClient(idcon);
+	}
+	
+	
 	@Override
 	public Conseiller verificationLogin(String login, String pwd) {
 	
@@ -81,6 +86,9 @@ public class Services implements IConseillerService, ILoginService, IGerantServi
 				return true;
 			}
 	
+		
+			
+			
 		}
 		return false;
 	}
