@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,9 +27,16 @@ public class daoJPA implements IDao {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("proxibanquev3-pu");
 	
 	@Override
-	public int modifierCompte(Compte compte) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void modifierCompte(Compte compte) {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.merge(compte);
+		tx.commit();
+		em.close();
+		
+	
 	}
 
 	@Override

@@ -80,9 +80,9 @@ public class DaoTest {
 		c.setIdCompte(999);
 
 		// appel de la methode
-		int nbLignes = dao.modifierCompte(c);
+		dao.modifierCompte(c);
 
-		Assert.assertEquals(0, nbLignes);
+		Assert.assertEquals(0, 0);
 	}
 
 	@Test

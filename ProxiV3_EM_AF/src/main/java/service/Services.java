@@ -19,7 +19,7 @@ import metier.Gerant;
 public class Services implements IConseillerService, ILoginService, IGerantService {
 
 	@Inject
-	@TypeDaoQualificateur(TypeDAO.V2)
+	@TypeDaoQualificateur(TypeDAO.V3)
 	private IDao iDao;
 
 	@Override
