@@ -1,19 +1,17 @@
 package lanceur;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.inject.Inject;
 
-import metier.Client;
 import metier.Conseiller;
+import service.ILoginService;
+
 
 public class lanceur {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Conseiller c1 = new Conseiller();
+		/*Conseiller c1 = new Conseiller();
 		c1.setAdresse("rue A");
 		c1.setNom("A");
 		c1.setPrenom("A");
@@ -39,6 +37,12 @@ public class lanceur {
 		em.persist(c2);
 		tx.commit();
 		em.close();
+		*/
+		
+
+		
+		
+		
 		
 	}
 
