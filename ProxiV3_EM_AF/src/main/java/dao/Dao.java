@@ -62,7 +62,7 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public int modifierCompte(Compte compte) {
+	public void modifierCompte(Compte compte) {
 		int row = 0;
 		try {
 			// prepare la requete
@@ -91,7 +91,7 @@ public class Dao implements IDao {
 		} finally {
 			DaoConnexion.closeConnexion();
 		}
-		return row;
+		
 	}
 
 	@Override
