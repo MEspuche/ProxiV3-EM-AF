@@ -55,9 +55,9 @@ public class MBeanListeClient implements Serializable {
 
 	}
 
-public Collection<Client> listClients() {
+public Collection<Client> listClients(Conseiller conseiller) {
 		
 		return iConseiller.listerClients(conseiller);
-	
+	}
 
 }

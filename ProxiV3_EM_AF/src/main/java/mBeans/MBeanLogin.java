@@ -51,6 +51,7 @@ public class MBeanLogin implements Serializable
 		Conseiller c = iLogin.verificationLogin(conseiller.getLogin(), conseiller.getPwd());
 		
 		if (c.getLogin().equalsIgnoreCase(conseiller.getLogin()) && c.getPwd().equals(conseiller.getPwd())) {
+			conseiller=c;
 			return "listeClients";
 		} else {
 			FacesContext context = FacesContext.getCurrentInstance();

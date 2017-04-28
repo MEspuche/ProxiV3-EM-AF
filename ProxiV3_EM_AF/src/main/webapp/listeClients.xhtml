@@ -12,7 +12,7 @@
 <h:body>
 	<h:form>
 
-		<h:dataTable value="#{mBeanListeClient.listclients}" var="leClient" border="1"
+		<h:dataTable value="#{mBeanListeClient.listClients(mBeanLogin.conseiller)}" var="leClient" border="1"
 			width="200" cellpadding="5">
 			<f:facet name="header">
 				<h:outputLabel value="Liste des clients" style="color:green"></h:outputLabel>
