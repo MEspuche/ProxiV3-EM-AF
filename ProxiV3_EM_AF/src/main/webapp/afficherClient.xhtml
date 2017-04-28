@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<H2>Hello</H2>
-</body>
-</html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>detail client</title>
+</h:head>
+<h:messages></h:messages>
+<h:body>
+	<h:form>
+
+		<h:dataTable value="#{mBeanAfficherClient.listComptes()}" var="leCompte" border="1"
+			width="200" cellpadding="5">
+			<f:facet name="header">
+				<h:outputLabel value="Liste des comptes client" style="color:green"></h:outputLabel>
+			</f:facet>
+			<h:column>
+				<f:facet name="header">numero de Compte</f:facet>
+	#{leClient.numeroCompte}
+	</h:column>
+			<h:column>
+				<f:facet name="header">Solde</f:facet>
+	#{leClient.solde}
+	</h:column>
+			<h:column>
+				<f:facet name="header">Date d'ouverture</f:facet>
+	#{leClient.dateOuverture}
+	</h:column>
+	<h:column>
+				<f:facet name="header">decouvert</f:facet>
+	#{leClient.decouvert}
+	</h:column>
+	<h:column>
+				<f:facet name="header">remuneration</f:facet>
+	#{leClient.remuneration}
+	</h:column>
+			<h:column>
+				<f:facet name="header">Effectuer Virement</f:facet>
+				<h:commandLink update="@form" value="virement"
+					action="#{mBeanafficherClient.virement()}">
+					<f:setPropertyActionListener value="#{leCompte}" target="#{mBeanafficher.aficherCompte}"></f:setPropertyActionListener>
+					</h:commandLink>
+
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+</h:body>
+</h:html>
