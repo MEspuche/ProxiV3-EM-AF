@@ -48,7 +48,7 @@
 					<h:form>
 
 						<p:dataTable
-							value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}"
+							value="#{mBeanAfficherClient.afficherCompteCourantClient(mBeanLogin.conseiller, mBeanListeClients.client)}"
 							var="leCompte" border="1" width="200" cellpadding="5">
 
 							<p:column>
@@ -63,20 +63,20 @@
 								<f:facet name="header">Date d'ouverture</f:facet>
 	#{leCompte.dateOuverture}
 	</p:column>
-							<!-- 	<p:column> -->
-							<!-- 				<f:facet name="header">decouvert</f:facet> -->
-							<!-- 	#{leCompte.decouvert} -->
-							<!-- 	</p:column> -->
+								<p:column>
+											<f:facet name="header">decouvert</f:facet>
+								#{leCompte.decouvert}
+								</p:column>
 							<!-- 	<p:column> -->
 							<!-- 				<f:facet name="header">remuneration</f:facet> -->
 							<!-- 	#{leCompte.remuneration} -->
 							<!-- 	</p:column> -->
 							<p:column>
 								<f:facet name="header">Effectuer Virement</f:facet>
-								<p:commandLink update="@form" value="virement"
-									action="#{mBeanafficherClient.virement()}">
+								<p:commandLink value="virement"
+									action="#{mBeanAfficherClient.virement(leCompte)}">
 									<f:setPropertyActionListener value="#{leCompte}"
-										target="#{mBeanafficher.virement}"></f:setPropertyActionListener>
+										target="#{mBeanAfficherClient.compte}"></f:setPropertyActionListener>
 								</p:commandLink>
 
 							</p:column>
@@ -88,7 +88,7 @@
 					<h:form>
 
 						<p:dataTable
-							value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}"
+							value="#{mBeanAfficherClient.afficherCompteEpargneClient(mBeanLogin.conseiller, mBeanListeClients.client)}"
 							var="leCompte" border="1" width="200" cellpadding="5">
 
 							<p:column>
@@ -107,16 +107,16 @@
 							<!-- 				<f:facet name="header">decouvert</f:facet> -->
 							<!-- 	#{leCompte.decouvert} -->
 							<!-- 	</p:column> -->
-							<!-- 	<p:column> -->
-							<!-- 				<f:facet name="header">remuneration</f:facet> -->
-							<!-- 	#{leCompte.remuneration} -->
-							<!-- 	</p:column> -->
+								<p:column>
+											<f:facet name="header">remuneration</f:facet>
+								#{leCompte.remuneration}
+								</p:column>
 							<p:column>
 								<f:facet name="header">Effectuer Virement</f:facet>
-								<p:commandLink update="@form" value="virement"
-									action="#{mBeanafficherClient.virement()}">
+								<p:commandLink value="virement"
+									action="#{mBeanAfficherClient.virement(leCompte)}">
 									<f:setPropertyActionListener value="#{leCompte}"
-										target="#{mBeanafficher.virement}"></f:setPropertyActionListener>
+										target="#{mBeanAfficherClient.compte}"></f:setPropertyActionListener>
 								</p:commandLink>
 
 							</p:column>
