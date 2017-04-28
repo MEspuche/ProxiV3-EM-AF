@@ -10,79 +10,125 @@
 </h:head>
 <h:messages></h:messages>
 <h:body>
+	<p:panel header="client">
+		<br />
+		<br />
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText value="Nom :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.nom}" />
+				<h:outputText value="Prenom :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.prenom}" />
+				<h:outputText value="Adresse :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.adresse}" />
+				<h:outputText value="Code Postal :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.codePostal}" />
+				<h:outputText value="Ville :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.ville}" />
+				<h:outputText value="Telephone :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.telephone}" />
+				<h:outputText value="Email :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.email}" />
+				<h:outputText value="Nom de l'entreprise :" style="font-weight:bold" />
+				<h:outputText value="#{mBeanListeClients.client.nomEntreprise}" />
+			</h:panelGrid>
 
-<h:form id="form">
-    <p:dataList value="#{dataListView.cars1}" var="car" type="ordered">
-        <f:facet name="header">
-            Basic
-        </f:facet>
-        #{car.brand}, #{car.year}
-    </p:dataList>
- 
-    <p:dataList value="#{dataListView.cars2}" var="car" type="definition">
-        <f:facet name="header">
-            Definition
-        </f:facet>
-        Brand: #{car.brand}, Year: #{car.year}
-        <f:facet name="description">
-            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
-        </f:facet>
-    </p:dataList>
+			<br />
+			<br />
+			<br />
 
-<p:panel header="Compte client">
-<h:form id="form">
-    <p:dataList value="#{dataListView.cars1}" var="car" type="ordered">
-        <f:facet name="header">
-            Basic
-        </f:facet>
-        #{car.brand}, #{car.year}
-    </p:dataList>
- 
-    <p:dataList value="#{dataListView.cars2}" var="car" type="definition">
-        <f:facet name="header">
-            Definition
-        </f:facet>
-        Brand: #{car.brand}, Year: #{car.year}
-        <f:facet name="description">
-            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
-        </f:facet>
-    </p:dataList>
-	<h:form>
+		</h:form>
+<!-- 		<p:panel header="Comptes client"> -->
 
-		<h:dataTable value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}" var="leCompte" border="1"
-			width="200" cellpadding="5">
-			
-			<h:column>
-				<f:facet name="header">numero de Compte</f:facet>
+
+
+
+			<p:tabView>
+				<p:tab title="Compte Coutant">
+					<h:form>
+
+						<p:dataTable
+							value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}"
+							var="leCompte" border="1" width="200" cellpadding="5">
+
+							<p:column>
+								<f:facet name="header">numero de Compte</f:facet>
 	#{leCompte.numeroCompte}
-	</h:column>
-			<h:column>
-				<f:facet name="header">Solde</f:facet>
+	</p:column>
+							<p:column>
+								<f:facet name="header">Solde</f:facet>
 	#{leCompte.solde}
-	</h:column>
-			<h:column>
-				<f:facet name="header">Date d'ouverture</f:facet>
+	</p:column>
+							<p:column>
+								<f:facet name="header">Date d'ouverture</f:facet>
 	#{leCompte.dateOuverture}
-	</h:column>
-<!-- 	<h:column> -->
-<!-- 				<f:facet name="header">decouvert</f:facet> -->
-<!-- 	#{leCompte.decouvert} -->
-<!-- 	</h:column> -->
-<!-- 	<h:column> -->
-<!-- 				<f:facet name="header">remuneration</f:facet> -->
-<!-- 	#{leCompte.remuneration} -->
-<!-- 	</h:column> -->
-			<h:column>
-				<f:facet name="header">Effectuer Virement</f:facet>
-				<h:commandLink update="@form" value="virement"
-					action="#{mBeanafficherClient.virement()}">
-					<f:setPropertyActionListener value="#{leCompte}" target="#{mBeanafficher.virement}"></f:setPropertyActionListener>
-					</h:commandLink>
+	</p:column>
+							<!-- 	<p:column> -->
+							<!-- 				<f:facet name="header">decouvert</f:facet> -->
+							<!-- 	#{leCompte.decouvert} -->
+							<!-- 	</p:column> -->
+							<!-- 	<p:column> -->
+							<!-- 				<f:facet name="header">remuneration</f:facet> -->
+							<!-- 	#{leCompte.remuneration} -->
+							<!-- 	</p:column> -->
+							<p:column>
+								<f:facet name="header">Effectuer Virement</f:facet>
+								<p:commandLink update="@form" value="virement"
+									action="#{mBeanafficherClient.virement()}">
+									<f:setPropertyActionListener value="#{leCompte}"
+										target="#{mBeanafficher.virement}"></f:setPropertyActionListener>
+								</p:commandLink>
 
-			</h:column>
-		</h:dataTable>
+							</p:column>
+						</p:dataTable>
 
-	</h:form>
-	</p:panel>
+					</h:form>
+				</p:tab>
+				<p:tab title="Compte Epargne">
+					<h:form>
+
+						<p:dataTable
+							value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}"
+							var="leCompte" border="1" width="200" cellpadding="5">
+
+							<p:column>
+								<f:facet name="header">numero de Compte</f:facet>
+	#{leCompte.numeroCompte}
+	</p:column>
+							<p:column>
+								<f:facet name="header">Solde</f:facet>
+	#{leCompte.solde}
+	</p:column>
+							<p:column>
+								<f:facet name="header">Date d'ouverture</f:facet>
+	#{leCompte.dateOuverture}
+	</p:column>
+							<!-- 	<p:column> -->
+							<!-- 				<f:facet name="header">decouvert</f:facet> -->
+							<!-- 	#{leCompte.decouvert} -->
+							<!-- 	</p:column> -->
+							<!-- 	<p:column> -->
+							<!-- 				<f:facet name="header">remuneration</f:facet> -->
+							<!-- 	#{leCompte.remuneration} -->
+							<!-- 	</p:column> -->
+							<p:column>
+								<f:facet name="header">Effectuer Virement</f:facet>
+								<p:commandLink update="@form" value="virement"
+									action="#{mBeanafficherClient.virement()}">
+									<f:setPropertyActionListener value="#{leCompte}"
+										target="#{mBeanafficher.virement}"></f:setPropertyActionListener>
+								</p:commandLink>
+
+							</p:column>
+						</p:dataTable>
+
+					</h:form>
+					</p:tab>
+			</p:tabView>
+		</p:panel>
+
+<!-- 	</p:panel> -->
+
+
 </h:body>
 </h:html>
