@@ -102,18 +102,38 @@
     <version>1.0.8</version>
 </dependency>
 
-  <!-- https://mvnrepository.com/artifact/org.primefaces.themes/mint-choc -->
-<dependency>
-    <groupId>org.primefaces.themes</groupId>
-    <artifactId>mint-choc</artifactId>
-    <version>1.0.8</version>
-</dependency>
+
 <!-- https://mvnrepository.com/artifact/org.primefaces.themes/casablanca -->
 <dependency>
     <groupId>org.primefaces.themes</groupId>
     <artifactId>casablanca</artifactId>
     <version>1.0.8</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.primefaces.themes/south-street -->
+<dependency>
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>overcast</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.primefaces.themes/south-street -->
+<dependency>
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>start</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.primefaces.themes/excite-bike -->
+<dependency>
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>hot-sneaks</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
+
+
+
 
 </dependencies>
 

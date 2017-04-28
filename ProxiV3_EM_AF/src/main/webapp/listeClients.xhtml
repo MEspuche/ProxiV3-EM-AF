@@ -13,34 +13,39 @@
 <p:panel header="Liste des clients">
 	<h:form>
 
-		<h:dataTable value="#{mBeanListeClients.listClients(mBeanLogin.conseiller)}" var="leClient" border="1"
+		<p:dataTable value="#{mBeanListeClients.listClients(mBeanLogin.conseiller)}" var="leClient" border="1"
 			width="200" cellpadding="5">
 			
-			<h:column>
+			<p:column>
 				<f:facet name="header">ID</f:facet>
 	#{leClient.id}
-	</h:column>
-			<h:column>
+	</p:column>
+			<p:column>
 				<f:facet name="header">Nom</f:facet>
 	#{leClient.nom}
-	</h:column>
-			<h:column>
+	</p:column>
+			<p:column>
 				<f:facet name="header">Prenom</f:facet>
 	#{leClient.prenom}
-	</h:column>
-	<h:column>
+	</p:column>
+	<p:column>
 				<f:facet name="header">nomEntreprise</f:facet>
 	#{leClient.nomEntreprise}
-	</h:column>
-			<h:column>
+	</p:column>
+			<p:column>
 				<f:facet name="header">Afficher</f:facet>
-				<h:commandLink update="@form" value="Afficher"
+				<p:commandLink update="@form" value="Afficher"
 					action="#{mBeanListeClients.afficherClient(leClient)}">
-					<f:setPropertyActionListener value="#{leClient}" target="#{mBeanListeClients.client}"></f:setPropertyActionListener>
-					</h:commandLink>
+					<f:setPropertyActionListener value="#{leClient}" target="#{mBeanListeClients.client}"/>
+					</p:commandLink>
 
-			</h:column>
-		</h:dataTable>
+
+
+
+
+
+			</p:column>
+		</p:dataTable>
 
 	</h:form>
 	</p:panel>
