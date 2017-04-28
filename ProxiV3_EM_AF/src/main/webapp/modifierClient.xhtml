@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>detail client</title>
+</h:head>
+<h:messages></h:messages>
+<h:body>
+	<p:panel header="client">
+		<br />
+		<br />
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText value="Nom :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.nom}" />
+				<h:outputText value="Prenom :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.prenom}" />
+				<h:outputText value="Adresse :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.adresse}" />
+				<h:outputText value="Code Postal :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.codePostal}" />
+				<h:outputText value="Ville :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.ville}" />
+				<h:outputText value="Telephone :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.telephone}" />
+				<h:outputText value="Email :" style="font-weight:bold" />
+				<h:inputText value="#{mBeanListeClients.client.email}" />
+
+			</h:panelGrid>
+
+			<br />
+			<br />
+			<br />
+			
+			<h:panelGrid columns="2" cellpadding="5">
+			<h:commandButton type="submit" value="Modifier"
+				action="#{mBeanModifierClient.modifierClient(mBeanLogin.conseiller,
+				mBeanListeClients.client.id, mBeanListeClients.client.nom, mBeanListeClients.client.prenom,
+					mBeanListeClients.client.email, mBeanListeClients.client.adresse, 
+					mBeanListeClients.client.codePostal, mBeanListeClients.client.ville, 
+					mBeanListeClients.client.telephone)}"></h:commandButton>
+			
+			<h:commandButton type="submit" value="Annuler" action="afficherClient"></h:commandButton>
+			</h:panelGrid>
+
+
+
+		</h:form>
+		</p:panel>
+</h:body>
+</h:html>

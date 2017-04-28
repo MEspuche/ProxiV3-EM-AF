@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>detail client</title>
+</h:head>
+<h:messages></h:messages>
+<h:body>
+	<p:panel header="Recapitulatif virement">
+
+		<h:form>
+			<p:panel header="Compte a debiter">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Numero de Compte :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanAfficherClient.compte.numeroCompte}" />
+					<h:outputText value="Solde :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanAfficherClient.compte.solde}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+
+
+			<p:panel header="Compte a crediter">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Numero de Compte :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanEffectuerVirement.compteCred.numeroCompte}" />
+					<h:outputText value="Solde :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanEffectuerVirement.compteCred.solde}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+			<br/>
+			<br/>
+			<h:commandButton type="submit" value="Retour Client" action="afficherClient"></h:commandButton>
+
+		</h:form>
+	</p:panel>
+</h:body>
+</h:html>

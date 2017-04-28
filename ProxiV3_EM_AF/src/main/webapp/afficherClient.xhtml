@@ -13,7 +13,9 @@
 	<p:panel header="client">
 		<br />
 		<br />
+		
 		<h:form>
+		<p:panel>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputText value="Nom :" style="font-weight:bold" />
 				<h:outputText value="#{mBeanListeClients.client.nom}" />
@@ -32,6 +34,16 @@
 				<h:outputText value="Nom de l'entreprise :" style="font-weight:bold" />
 				<h:outputText value="#{mBeanListeClients.client.nomEntreprise}" />
 			</h:panelGrid>
+			</p:panel>		
+			<br />
+			<br />
+			
+			<h:panelGrid columns="2" cellpadding="5">
+			<h:commandButton type="submit" value="Modifier" action="modifierClient"></h:commandButton>
+			<h:commandButton type="submit" value="Retour Liste Client" action="listeClients"></h:commandButton>
+					
+					
+					</h:panelGrid>
 
 			<br />
 			<br />

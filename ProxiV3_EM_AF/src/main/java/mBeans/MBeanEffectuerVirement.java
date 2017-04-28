@@ -8,7 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
+import metier.Client;
 import metier.Compte;
+import metier.Conseiller;
 import service.IConseillerService;
 import service.Services;
 
@@ -24,6 +26,18 @@ public class MBeanEffectuerVirement implements Serializable {
 	private IConseillerService iService = new Services();
 	private Collection<Compte> comptes = new ArrayList<Compte>();
 	private Compte compteCred;
+	private double montant;
+
+	
+	
+	
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
 
 	public Collection<Compte> getComptes() {
 		return comptes;
@@ -59,6 +73,13 @@ public class MBeanEffectuerVirement implements Serializable {
 		return "montantvir";
 	}
 	
+	
+	public String confirmationVirement(Conseiller con, Client c, Compte comptecr, Compte comptede, double montant)
+	{
+		iService.effectuerVirement(con, c, comptecr, comptede, montant);
+		return "recapVirement";
+	}
+
 	
 
 }

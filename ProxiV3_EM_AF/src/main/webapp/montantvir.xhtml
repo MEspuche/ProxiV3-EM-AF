@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>detail client</title>
+</h:head>
+<h:messages></h:messages>
+<h:body>
+	<p:panel header="Virement">
+
+		<h:form>
+			<p:panel header="Compte a debiter">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Numero de Compte :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanAfficherClient.compte.numeroCompte}" />
+					<h:outputText value="Solde :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanAfficherClient.compte.solde}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+
+
+			<p:panel header="Compte a crediter">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Numero de Compte :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanEffectuerVirement.compteCred.numeroCompte}" />
+					<h:outputText value="Solde :" style="font-weight:bold" />
+					<h:outputText value="#{mBeanEffectuerVirement.compteCred.solde}" />
+
+				</h:panelGrid>
+			</p:panel>
+
+
+			<p:panel header="Montant">
+				<h:panelGrid columns="4" cellpadding="5">
+					<h:outputText value="montant :" style="font-weight:bold" />
+					<h:inputText value="#{mBeanEffectuerVirement.montant}" />
+					<h:commandButton type="submit" value="Valider"
+				action="#{mBeanEffectuerVirement.confirmationVirement(mBeanLogin.conseiller, mBeanListeClients.client,mBeanEffectuerVirement.compteCred,mBeanAfficherClient.compte,mBeanEffectuerVirement.montant)}"></h:commandButton>
+					<h:commandButton type="submit" value="Abandonner Virement" action="afficherClient"></h:commandButton>
+				</h:panelGrid>
+			</p:panel>
+
+	
+				
+
+		</h:form>
+	</p:panel>
+</h:body>
+</h:html>
