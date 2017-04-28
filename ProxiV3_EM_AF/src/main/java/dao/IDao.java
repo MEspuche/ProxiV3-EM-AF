@@ -10,20 +10,20 @@ public interface IDao {
 /**
  * Modifie un compte dans la base de donn�es
  * @param compte Compte modifi�
- * @return retourne le nombre de lignes modifi�es dans la table
+ * 
  */
 	public void modifierCompte(Compte compte);
 /**
  * methode qui creer un conseiller dans la base de donn�es
  * @param conseiller conseiller a inserer dans la base de donn�es
- * @return retourne le nombre de lignes modifi�es dans la table
+ *
  */
  
 	public void creerConseiller(Conseiller conseiller);
 /**
  * Modifie un conseiller dans la base de donn�es
  * @param conseiller conseiller modifi�
- * @return retourne le nombre de lignes modifi�es dans la base de donn�es
+ * 
  */
 	public void modifierConseiller(Conseiller conseiller);
 /**
@@ -36,46 +36,46 @@ public interface IDao {
 /**
  * supprime un conseiller de la base de donn�es
  * @param conseiller conseiller � supprimer
- * @return retourne le nombre de lignes modifi�es dans la base de donn�es
+ * 
  */
 
 	public void supprimerConseiller(Conseiller conseiller);
 /**
  * creer un compte dans la base de donn�es
  * @param compte compte � cr�er
- * @return retourne le nombre de lignes modifi�es dans la base de donn�es
+ * 
  */
  
 	public void creerCompte(Compte compte);
 /**
  * retourne un compte selectionner par sont id
  * @param id identifiant du compte a retourner
- * @return compte correspondant � l'Id
+ * 
  */
 	public Compte getCompteParId(int id);
 /**
  * supprime le compte de la base de donn�es
  * @param compte compte � supprimer
- * @return retourne le nombre de lignes modifi�es
+ * 
  */
 	public void supprimerCompte(Compte compte);
 /**
  * creer un client dans la base de donn�es
  * @param client client � creer
- * @return retourne le nombre de lignes modifi�es
+ * 
  */
 	public void creerClient(Client client);
 	
 /**
  * modifie le client dans la base de donn�es
  * @param client client a modifi�
- * @return retourne le nombre de lignes modifi�es
+ * 
  */
 	public void modifierClient(Client client);
 /**
  * supprime un client dans la base de donn�es
  * @param client client � supprimer
- * @return retourne le nombre de lignes modifi�es dans la base de donn�es
+ * 
  */
 
 	public void supprimerClient(Client client);

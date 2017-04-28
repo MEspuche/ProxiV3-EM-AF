@@ -49,7 +49,7 @@ public interface IConseillerService {
 	 *            la ville du client
 	 * @param telephone
 	 *            le num�ro de t�l�phone du client
-	 * @return true si le client a bien �t� modifi� et false en cas contraire
+	 * 
 	 */
 	public void modifierClient(Conseiller conseiller, int idClient, String nom, String prenom, String email,
 			String adresse, String codePostal, String ville, String telephone);
