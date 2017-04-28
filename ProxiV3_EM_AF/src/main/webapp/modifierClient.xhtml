@@ -6,8 +6,18 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>detail client</title>
+	<title>Modification du client</title>
 </h:head>
+<p:panel>
+<h:form>
+<h:panelGrid columns="2" cellpadding="5">
+<h:commandButton type="submit" value="Retour Liste Client" action="listeClients"></h:commandButton>
+<h:commandButton type="submit" value="Deconnexion"
+				action="#{mBeanLogin.deconnexion}"></h:commandButton>
+				</h:panelGrid>
+				</h:form>
+				</p:panel>
+				<br/>
 <h:messages></h:messages>
 <h:body>
 	<p:panel header="client">

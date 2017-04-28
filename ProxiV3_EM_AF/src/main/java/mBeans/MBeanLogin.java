@@ -47,6 +47,13 @@ public class MBeanLogin implements Serializable
 		this.conseiller = conseiller;
 	}
 
+	public String deconnexion()
+	{
+		conseiller.setPwd("");
+		conseiller.setLogin("");
+		return"login";
+	}
+	
 	public String verificationLogin() {
 		Conseiller c = iLogin.verificationLogin(conseiller.getLogin(), conseiller.getPwd());
 		

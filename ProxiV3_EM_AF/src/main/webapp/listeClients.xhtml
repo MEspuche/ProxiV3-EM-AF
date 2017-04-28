@@ -6,10 +6,18 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Identification sur Proxibanque</title>
+	<title>Liste des Clients</title>
 </h:head>
 <h:messages></h:messages>
 <h:body>
+<p:panel>
+<h:form>
+<h:commandButton type="submit" value="Deconnexion"
+				action="#{mBeanLogin.deconnexion}"></h:commandButton>
+				</h:panelGrid>
+				</h:form>
+				<br/>
+
 <p:panel header="Liste des clients">
 	<h:form>
 
@@ -46,6 +54,12 @@
 
 			</p:column>
 		</p:dataTable>
+
+
+<br/>
+			
+			
+			
 
 	</h:form>
 	</p:panel>

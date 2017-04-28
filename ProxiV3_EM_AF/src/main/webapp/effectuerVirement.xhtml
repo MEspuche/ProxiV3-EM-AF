@@ -6,10 +6,23 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>detail client</title>
+	<title>Effectuer un virement</title>
 </h:head>
+
+
 <h:messages></h:messages>
 <h:body>
+<p:panel>
+<h:form>
+<h:panelGrid columns="2" cellpadding="5">
+<h:commandButton type="submit" value="Retour Liste Client" action="listeClients"></h:commandButton>
+<h:commandButton type="submit" value="Deconnexion"
+				action="#{mBeanLogin.deconnexion}"></h:commandButton>
+				</h:panelGrid>
+				</h:form>
+				</p:panel>
+				<br/>
+			
 	<p:panel header="Virement">
 
 		<h:form>
