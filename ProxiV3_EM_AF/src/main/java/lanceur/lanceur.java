@@ -10,14 +10,19 @@ import metier.Compte;
 import metier.CompteCourant;
 import metier.CompteEpargne;
 import metier.Conseiller;
+import service.IServiceCryptageDecryptgage;
+import service.Services;
 
 public class lanceur {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+/*
+ * 
 
-		/*Conseiller c1 = new Conseiller();
-
+		IServiceCryptageDecryptgage iscd = new Services();
+		
+		Conseiller c1 = new Conseiller();
 		c1.setNom("Robichet");
 		c1.setPrenom("Robert");
 		c1.setAdresse("24 rue du Chène");
@@ -26,6 +31,10 @@ public class lanceur {
 		c1.setTelephone("0478458596");
 		c1.setLogin("demo1");
 		c1.setPwd("demo1");
+		String pwdvrai1 = iscd.encrypt(c1.getPwd(), c1.getLogin());
+		c1.setPwd(pwdvrai1);
+		
+		
 
 		Conseiller c2 = new Conseiller();
 		c2.setNom("Patoulatchi");
@@ -36,6 +45,8 @@ public class lanceur {
 		c2.setTelephone("0745859632");
 		c2.setLogin("demo2");
 		c2.setPwd("demo2");
+		String pwdvrai2 = iscd.encrypt(c2.getPwd(), c2.getLogin());
+		c2.setPwd(pwdvrai2);
 
 		Client cl2 = new Client();
 		cl2.setNom("Smithdfsf");
@@ -187,7 +198,9 @@ public class lanceur {
 		em.persist(co9);
 		tx.commit();
 		em.close();
-		*/
+		
+		 */
+	
 
 	}
 

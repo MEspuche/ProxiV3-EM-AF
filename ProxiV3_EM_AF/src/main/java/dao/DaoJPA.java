@@ -10,13 +10,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import dao.TypeDaoQualificateur.TypeDAO;
 import metier.Client;
 import metier.Compte;
 import metier.CompteCourant;
 import metier.CompteEpargne;
 import metier.Conseiller;
 import metier.Personne;
+import service.IServiceCryptageDecryptgage;
+import service.Services;
 
 //@TypeDaoQualificateur(TypeDAO.V3)
 public class DaoJPA implements IDao {
@@ -62,14 +63,15 @@ public class DaoJPA implements IDao {
 	//testée
 	@Override
 	public Conseiller verificationLogin(String login, String pwd) {
-		
+		IServiceCryptageDecryptgage iscd = new Services();
 		Conseiller c2 = new Conseiller();
 		c2.setLogin("");
 		c2.setPwd("");
+		String pwdfaux = iscd.encrypt(pwd, login);
 		EntityManager em = emf.createEntityManager();
 		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.login = :lelogin AND c.pwd = :lemdp");
 		q.setParameter("lelogin", login);
-		q.setParameter("lemdp", pwd);
+		q.setParameter("lemdp", pwdfaux);
 		List<Conseiller> listpwd = q.getResultList();
 		for(Conseiller conseiller :listpwd)
 		{
@@ -83,6 +85,9 @@ public class DaoJPA implements IDao {
 			c2.setPwd(conseiller.getPwd());
 			
 			}
+		
+		String pwdvrai = iscd.decrypt(c2.getPwd(), c2.getLogin());
+		c2.setPwd(pwdvrai);
 		em.close();
 		return c2;
 }

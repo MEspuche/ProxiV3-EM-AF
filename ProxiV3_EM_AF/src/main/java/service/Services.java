@@ -1,7 +1,11 @@
 package service;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import dao.DaoJPA;
 import dao.IDao;
@@ -13,7 +17,7 @@ import metier.CompteEpargne;
 import metier.Conseiller;
 import metier.Gerant;
 
-public class Services implements IConseillerService, ILoginService, IGerantService {
+public class Services implements IConseillerService, ILoginService, IGerantService, IServiceCryptageDecryptgage {
 
 
 	private IDao iDao = new DaoJPA();
@@ -228,4 +232,27 @@ public class Services implements IConseillerService, ILoginService, IGerantServi
 		
 	}
 
-}
+
+	@Override
+	  public String encrypt(String password,String key){
+        String crypte=key;
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48;  
+            crypte=crypte+(char)c; 
+        }
+        return crypte;
+    }
+
+
+	@Override
+	public String decrypt(String password, String key) {
+	        String aCrypter="";
+	        for (int i = key.length(); i<password.length();i++)  {
+	            int c=password.charAt(i)^48;  
+	            aCrypter=aCrypter+(char)c; 
+	        }
+	        return aCrypter;
+	    }
+	}
+
+

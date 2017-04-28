@@ -196,6 +196,9 @@ public class Dao implements IDao {
 				c.setLogin(rs.getString("login"));
 				c.setPwd(rs.getString("pwd"));
 			}
+			
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
