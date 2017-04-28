@@ -11,7 +11,42 @@
 <h:messages></h:messages>
 <h:body>
 
+<h:form id="form">
+    <p:dataList value="#{dataListView.cars1}" var="car" type="ordered">
+        <f:facet name="header">
+            Basic
+        </f:facet>
+        #{car.brand}, #{car.year}
+    </p:dataList>
+ 
+    <p:dataList value="#{dataListView.cars2}" var="car" type="definition">
+        <f:facet name="header">
+            Definition
+        </f:facet>
+        Brand: #{car.brand}, Year: #{car.year}
+        <f:facet name="description">
+            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+        </f:facet>
+    </p:dataList>
+
 <p:panel header="Compte client">
+<h:form id="form">
+    <p:dataList value="#{dataListView.cars1}" var="car" type="ordered">
+        <f:facet name="header">
+            Basic
+        </f:facet>
+        #{car.brand}, #{car.year}
+    </p:dataList>
+ 
+    <p:dataList value="#{dataListView.cars2}" var="car" type="definition">
+        <f:facet name="header">
+            Definition
+        </f:facet>
+        Brand: #{car.brand}, Year: #{car.year}
+        <f:facet name="description">
+            <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+        </f:facet>
+    </p:dataList>
 	<h:form>
 
 		<h:dataTable value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}" var="leCompte" border="1"
