@@ -63,6 +63,7 @@ public class MBeanAfficherClient implements Serializable{
 		return client;
 	}
 	public Collection<CompteCourant> afficherCompteCourantClient(Conseiller co, Client cl){
+		compteCourants.clear();
 		for (Compte c : iConseiller.afficherClient(co,cl.getId()).getComptes()){
 			if (c instanceof CompteCourant){
 				compteCourants.add((CompteCourant)c);
@@ -73,6 +74,7 @@ public class MBeanAfficherClient implements Serializable{
 	}
 	
 	public Collection<CompteEpargne> afficherCompteEpargneClient(Conseiller co, Client cl){
+		compteEpargnes.clear();
 		for (Compte c : iConseiller.afficherClient(co,cl.getId()).getComptes()){
 			if (c instanceof CompteEpargne){
 				compteEpargnes.add((CompteEpargne)c);
