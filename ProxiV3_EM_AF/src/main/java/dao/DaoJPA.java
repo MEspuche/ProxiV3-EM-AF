@@ -65,8 +65,8 @@ public class DaoJPA implements IDao {
 	public Conseiller verificationLogin(String login, String pwd) {
 		IServiceCryptageDecryptgage iscd = new Services();
 		Conseiller c2 = new Conseiller();
-		c2.setLogin(null);
-		c2.setPwd(null);
+		c2.setLogin(login+"vers boucle message");
+		c2.setPwd(pwd+"vers boucle message");
 		String pwdfaux = iscd.encrypt(pwd, login);
 		EntityManager em = emf.createEntityManager();
 		Query q = em.createQuery("SELECT c FROM Personne c WHERE c.login = :lelogin AND c.pwd = :lemdp");

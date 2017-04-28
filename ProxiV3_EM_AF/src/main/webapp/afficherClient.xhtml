@@ -11,37 +11,47 @@
 <h:messages></h:messages>
 <h:body>
 	<h:form>
+	<p:panel id="clientPanelGridId" header="Client"
+				style="width: 700;" widgetVar="oneUser">
+				<h:panelGrid columns="2" cellpadding="2" id="afficheClient"
+					border="0">
+					<h:outputLabel for="#{mBeanListeClients.client}"
+						value="nom" />
+					
 
-		<h:dataTable value="#{mBeanAfficherClient.listComptes()}" var="leCompte" border="1"
+				</h:panelGrid>
+			</p:panel>
+
+		<h:dataTable value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}" var="leCompte" border="1"
 			width="200" cellpadding="5">
 			<f:facet name="header">
 				<h:outputLabel value="Liste des comptes client" style="color:green"></h:outputLabel>
 			</f:facet>
 			<h:column>
 				<f:facet name="header">numero de Compte</f:facet>
-	#{leClient.numeroCompte}
+	#{leCompte.numeroCompte}
 	</h:column>
 			<h:column>
 				<f:facet name="header">Solde</f:facet>
-	#{leClient.solde}
+	#{leCompte.solde}
 	</h:column>
 			<h:column>
 				<f:facet name="header">Date d'ouverture</f:facet>
-	#{leClient.dateOuverture}
+	#{leCompte.dateOuverture}
 	</h:column>
-	<h:column>
-				<f:facet name="header">decouvert</f:facet>
-	#{leClient.decouvert}
-	</h:column>
-	<h:column>
-				<f:facet name="header">remuneration</f:facet>
-	#{leClient.remuneration}
-	</h:column>
+<!-- 	<h:column> -->
+<!-- 				<f:facet name="header">decouvert</f:facet> -->
+<!-- 	#{leCompte.decouvert} -->
+<!-- 	</h:column> -->
+<!-- 	<h:column> -->
+<!-- 				<f:facet name="header">remuneration</f:facet> -->
+<!-- 	#{leCompte.remuneration} -->
+<!-- 	</h:column> -->
 			<h:column>
 				<f:facet name="header">Effectuer Virement</f:facet>
 				<h:commandLink update="@form" value="virement"
 					action="#{mBeanafficherClient.virement()}">
-					<f:setPropertyActionListener value="#{leCompte}" target="#{mBeanafficher.aficherCompte}"></f:setPropertyActionListener>
+					<f:setPropertyActionListener value="#{leCompte}" target="#{mBeanafficher.virement}"></f:setPropertyActionListener>
 					</h:commandLink>
 
 			</h:column>

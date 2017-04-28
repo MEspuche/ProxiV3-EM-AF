@@ -10,13 +10,12 @@
 </h:head>
 <h:messages></h:messages>
 <h:body>
+<p:panel header="Liste des clients">
 	<h:form>
 
-		<h:dataTable value="#{mBeanListeClient.listClients(mBeanLogin.conseiller)}" var="leClient" border="1"
+		<h:dataTable value="#{mBeanListeClients.listClients(mBeanLogin.conseiller)}" var="leClient" border="1"
 			width="200" cellpadding="5">
-			<f:facet name="header">
-				<h:outputLabel value="Liste des clients" style="color:green"></h:outputLabel>
-			</f:facet>
+			
 			<h:column>
 				<f:facet name="header">ID</f:facet>
 	#{leClient.id}
@@ -36,13 +35,14 @@
 			<h:column>
 				<f:facet name="header">Afficher</f:facet>
 				<h:commandLink update="@form" value="Afficher"
-					action="#{mBeanListeClient.afficherClient()}">
-					<f:setPropertyActionListener value="#{leClient}" target="#{mBeanListeClient.client}"></f:setPropertyActionListener>
+					action="#{mBeanListeClients.afficherClient(leClient)}">
+					<f:setPropertyActionListener value="#{leClient}" target="#{mBeanListeClients.client}"></f:setPropertyActionListener>
 					</h:commandLink>
 
 			</h:column>
 		</h:dataTable>
 
 	</h:form>
+	</p:panel>
 </h:body>
 </h:html>

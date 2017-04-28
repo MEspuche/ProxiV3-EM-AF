@@ -16,7 +16,7 @@ import service.Services;
 @ManagedBean
 @Named
 @SessionScoped
-public class MBeanListeClient implements Serializable {
+public class MBeanListeClients implements Serializable {
 	/**
 	 * 
 	 */
@@ -50,7 +50,8 @@ public class MBeanListeClient implements Serializable {
 		this.client = client;
 	}
 
-	public String afficherClient() {
+	public String afficherClient(Client c) {
+		client=c;
 		return "afficherClient";
 
 	}
