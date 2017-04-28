@@ -89,7 +89,42 @@
 			<version>1.1.2</version>
 		</dependency>
 -->
+<dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>5.3</version>
+    </dependency>
+    
+  <!-- https://mvnrepository.com/artifact/org.primefaces.extensions/all-themes -->
+<dependency>
+    <groupId>org.primefaces.extensions</groupId>
+    <artifactId>all-themes</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
+  <!-- https://mvnrepository.com/artifact/org.primefaces.themes/mint-choc -->
+<dependency>
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>mint-choc</artifactId>
+    <version>1.0.8</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.primefaces.themes/casablanca -->
+<dependency>
+    <groupId>org.primefaces.themes</groupId>
+    <artifactId>casablanca</artifactId>
+    <version>1.0.8</version>
+</dependency>
+
 </dependencies>
+
+<repositories>
+    <repository>
+        <id>prime-repo</id>
+        <name>PrimeFaces Maven Repository</name>
+        <url>http://repository.primefaces.org</url>
+        <layout>default</layout>
+    </repository>
+</repositories>
 
   <build>
     <finalName>ProxiV3_EM_AF</finalName>
