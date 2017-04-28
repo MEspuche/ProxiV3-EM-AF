@@ -17,6 +17,7 @@ public class lanceur {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
 /*
  * 
 
@@ -29,7 +30,7 @@ public class lanceur {
 		c1.setCodePostal("38420");
 		c1.setVille("Le Versoud");
 		c1.setTelephone("0478458596");
-		c1.setLogin("demo1");
+		c1.setLogin("test1");
 		c1.setPwd("demo1");
 		String pwdvrai1 = iscd.encrypt(c1.getPwd(), c1.getLogin());
 		c1.setPwd(pwdvrai1);
@@ -43,7 +44,7 @@ public class lanceur {
 		c2.setCodePostal("45789");
 		c2.setVille("Ville sur marne");
 		c2.setTelephone("0745859632");
-		c2.setLogin("demo2");
+		c2.setLogin("test2");
 		c2.setPwd("demo2");
 		String pwdvrai2 = iscd.encrypt(c2.getPwd(), c2.getLogin());
 		c2.setPwd(pwdvrai2);
@@ -55,8 +56,8 @@ public class lanceur {
 		cl2.setCodePostal("78852");
 		cl2.setVille("Lille");
 		cl2.setTelephone("014458712");
-		cl2.setEntreprise(false);
-		cl2.setNomEntreprise(null);
+		cl2.setEntreprise(true);
+		cl2.setNomEntreprise("GTM");
 		cl2.setEmail("john.smith@test.com");
 		cl2.setConseiller(c1);
 
@@ -91,8 +92,8 @@ public class lanceur {
 		cl5.setCodePostal("69100");
 		cl5.setVille("Villeurbanne");
 		cl5.setTelephone("98754121");
-		cl5.setEntreprise(false);
-		cl5.setNomEntreprise(null);
+		cl5.setEntreprise(true);
+		cl5.setNomEntreprise("Netapsys");
 		cl5.setEmail("fayraud@email.com");
 		cl5.setConseiller(c1);
 
@@ -115,8 +116,8 @@ public class lanceur {
 		cl7.setCodePostal("69100");
 		cl7.setVille("Villeurbanne");
 		cl7.setTelephone("0606060606");
-		cl7.setEntreprise(false);
-		cl7.setNomEntreprise(null);
+		cl7.setEntreprise(true);
+		cl7.setNomEntreprise("Sopra");
 		cl7.setEmail("me@email.com");
 		cl7.setConseiller(c2);
 
@@ -199,7 +200,7 @@ public class lanceur {
 		tx.commit();
 		em.close();
 		
-		 */
+		  */
 	
 
 	}
