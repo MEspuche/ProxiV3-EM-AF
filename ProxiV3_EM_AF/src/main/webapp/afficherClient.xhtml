@@ -10,23 +10,13 @@
 </h:head>
 <h:messages></h:messages>
 <h:body>
-	<h:form>
-	<p:panel id="clientPanelGridId" header="Client"
-				style="width: 700;" widgetVar="oneUser">
-				<h:panelGrid columns="2" cellpadding="2" id="afficheClient"
-					border="0">
-					<h:outputLabel for="#{mBeanListeClients.client}"
-						value="nom" />
-					
 
-				</h:panelGrid>
-			</p:panel>
+<p:panel header="Compte client">
+	<h:form>
 
 		<h:dataTable value="#{mBeanAfficherClient.afficherClient(mBeanLogin.conseiller, mBeanListeClients.client).comptes}" var="leCompte" border="1"
 			width="200" cellpadding="5">
-			<f:facet name="header">
-				<h:outputLabel value="Liste des comptes client" style="color:green"></h:outputLabel>
-			</f:facet>
+			
 			<h:column>
 				<f:facet name="header">numero de Compte</f:facet>
 	#{leCompte.numeroCompte}
@@ -58,5 +48,6 @@
 		</h:dataTable>
 
 	</h:form>
+	</p:panel>
 </h:body>
 </h:html>
