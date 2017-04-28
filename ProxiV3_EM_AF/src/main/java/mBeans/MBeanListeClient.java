@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 import metier.Client;
+import metier.Conseiller;
 import service.IConseillerService;
 import service.Services;
 
@@ -48,12 +49,15 @@ public class MBeanListeClient implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
-	public String afficherClient(){
+
+	public String afficherClient() {
 		return "afficherClient";
-		
+
 	}
 
+public Collection<Client> listClients() {
+		
+		return iConseiller.listerClients(conseiller);
 	
 
 }
